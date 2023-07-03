@@ -1,0 +1,115 @@
+import processing.opengl.*;
+
+void setup() {
+  size(800, 600, P3D);
+  perspective(60 * PI / 180, 2, 0.1, 0);
+}
+
+void draw() {
+  
+  background(135, 206, 235);  // Define a cor do céu (azul claro)
+  lights();
+  ortho(-width/2, width/2, -height/2, height/2);
+  noStroke();
+  // Desenha o chão
+  pushMatrix();
+  translate(width/2, 485, 0);
+  fill(0, 128, 0);  // verde
+  box(width, 10, height);
+  popMatrix();
+  
+
+  //estrutura da lixeira
+  pushMatrix();
+  translate(400, 380, 0);
+  fill(136,240,120);
+  box(200, 200, 200);
+  popMatrix();
+  
+  
+  
+  
+  //pedal
+  pushMatrix();
+  translate(400, 480, 105);
+  fill (112,112,112);
+  box(30, 20, 5);
+  popMatrix();
+  
+  //olhos 
+  pushMatrix();
+  translate(370, 350, 110);
+  fill(0,0,0);
+  ellipse (0,0,20,20);
+  popMatrix();
+  
+  pushMatrix();
+  translate(370, 350, 110.01);
+  fill (255,255,255);
+  ellipse (4,-2,3,5);
+  popMatrix();
+
+  
+  pushMatrix();
+  translate(430, 350, 110);
+  fill(0,0,0);
+  ellipse (0,0,20,20);
+  popMatrix();
+  
+  pushMatrix();
+  translate(430, 350, 110.01);
+  fill (255,255,255);
+  ellipse (4,-2,3,5);
+  popMatrix();
+  
+  //boca
+  pushMatrix();
+  translate(400, 370, 110);
+  fill(0,0,0);
+  ellipse (0,0,20,20);
+  fill(136,240,120);
+  ellipse (0,-7,20,20);
+  popMatrix();
+  
+  pushMatrix();
+  translate(400, 370, 110.01);
+  fill(136,240,120);
+  ellipse (0,-7,20,20);
+  popMatrix();
+  
+  //bochecha 
+  pushMatrix();
+  translate(370, 350, 110);
+  fill(255,140,200);
+  ellipse (0,18,25,10);  
+  ellipse (60,18,25,10);
+  popMatrix();
+  
+
+  
+  //tampa lixeira 
+  pushMatrix();
+  translate(400, 280, 0);
+  fill (90,230,70);
+  box(220, 10, 220);
+  popMatrix(); 
+  
+  pushMatrix();
+  translate(400, 270, 0);
+  fill(136,240,120);
+  box(190, 10, 190);
+  popMatrix();
+
+  
+  
+  // Controles da câmera
+  camera(mouseX, mouseY/2, ((height/2) / tan(PI/6) ), width/2, height/2, 0, 0, 1, 0);
+
+
+
+}
+
+void mouseMoved() {
+  // Atualiza a posição da câmera conforme o movimento do mouse
+  redraw();
+}
